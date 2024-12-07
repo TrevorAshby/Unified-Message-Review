@@ -1,0 +1,168 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unified Messaging - Review</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <div class="navbar">
+        <div class="navbar_container">
+            <a class="navbar_link title" href="index.html">CS5744 - Project 2</a>
+            <a class="navbar_link" href="index.html">Test Scope</a>
+            <a class="navbar_link" href="test_plan.html">Test Plan</a>
+            <a class="navbar_link" href="phase_one.html">Phase One: Message Handler Test</a>
+            <a class="navbar_link" href="phase_two.html">Phase Two: Scheduled Messaging Test</a>
+            <a class="navbar_link" href="phase_three.html">Phase Three: Bakend and Log Processing Testing</a>
+            <a class="navbar_link active" href="validation.html">Validation Testing</a>
+            <a class="navbar_link" href="full_text.html">Full Text</a>
+        </div>
+    </div>
+    <div id="content">
+        <br>
+        <h1>Validation Testing</h1>
+        <hr>
+        <p>In this section of testing, we are making sure that the software meets all the functional and non-functional requirements. These tests will look at every module of the software at once in order to make sure there is end-to-end adherence to the requirements.</p> 
+
+        <br>
+        <h1>Test Case Skeletons</h1>
+        <hr>
+        <table>
+            <tr class="dark_row">
+                <th>Test Case ID</th>
+                <th>Test Case Description</th>
+                <th>Expected Results</th>
+                <th>Functional / Nonfunctional Requirement's Satisfied</th>
+            </tr>
+            <tr class="light_row">
+                <td><center>V-1a</center></td>
+                <td>User sends a single message sending request</td>
+                <td>Single message is sent to every intended recipient</td>
+                <td>FR-1</td>
+            </tr>
+            <tr class="dark_row">
+                <td><center>V-1b</center></td>
+                <td>User sends a batch message sending request</td>
+                <td>Batch message is sent to every intended recipient</td>
+                <td>FR-1</td>
+            </tr>
+            <tr class="light_row">
+                <td><center>V-1c</center></td>
+                <td>User sends a single message sending request during high volume</td>
+                <td>Single message is sent to every intended recipient</td>
+                <td>FR-1</td>
+            </tr>
+            <tr class="dark_row">
+                <td><center>V-1d</center></td>
+                <td>User sends a batch message sending request during high volume</td>
+                <td>Batch message is sent to every intended recipient</td>
+                <td>FR-1</td>
+            </tr>
+            <tr class="light_row">
+                <td><center>V-2a</center></td>
+                <td>User sends a single and batch message sending request to be sent out in real-time on SMS</td>
+                <td>Single and batch messages are sent out to every intended recipient in real-time on SMS</td>
+                <td>FR-2, FR-4</td>
+            </tr>
+            <tr class="dark_row">
+                <td><center>V-2b</center></td>
+                <td>User sends a single and batch message sending request to be sent out in real-time on email</td>
+                <td>Single and batch messages are sent out to every intended recipient in real-time on email</td>
+                <td>FR-2, FR-4</td>
+            </tr>
+            <tr class="light_row">
+                <td><center>V-2c</center></td>
+                <td>User sends a single and batch message sending request to be sent out in real-time on instant messaging</td>
+                <td>Single and batch messages are sent out to every intended recipient in real-time on instant messaging</td>
+                <td>FR-2, FR-4</td>
+            </tr>
+            <tr class="dark_row">
+                <td><center>V-2d</center></td>
+                <td>User sends a single and batch message sending request to be sent out the next day on SMS</td>
+                <td>Single and batch messages are sent out to every intended recipient the next day on SMS</td>
+                <td>FR-2, FR-4</td>
+            </tr>
+            <tr class="light_row">
+                <td><center>V-2e</center></td>
+                <td>User sends a single and batch message sending request to be sent out the next day on email</td>
+                <td>Single and batch messages are sent out to every intended recipient the next day on email</td>
+                <td>FR-2, FR-4</td>
+            </tr>
+            <tr class="dark_row">
+                <td><center>V-2f</center></td>
+                <td>User sends a single and batch message sending request to be sent out the next day on instant messaging</td>
+                <td>Single and batch messages are sent out to every intended recipient the next day on instant messaging</td>
+                <td>FR-2, FR-4</td>
+            </tr>
+            <tr class="light_row">
+                <td><center>V-3</center></td>
+                <td>User accidentally sends a duplicate message sending request.</td>
+                <td>Duplicate message is found and deleted before being sent out</td>
+                <td>FR-3</td>
+            </tr>
+            <tr class="dark_row">
+                <td><center>V-4</center></td>
+                <td>User sends multiple messages sending requests that would overload the channel</td>
+                <td>Platform sees the channel going over rate limit and switches the provider to continue the service while prevent overload</td>
+                <td>FR-5</td>
+            </tr>
+            <tr class="light_row">
+                <td><center>V-5</center></td>
+                <td>User tries to send a message sending request to be sent late at night</td>
+                <td>Platform defers the message to be sent at 9:00 AM the next day</td>
+                <td>FR-6</td>
+            </tr>
+            <tr class="dark_row">
+                <td><center>V-6a</center></td>
+                <td>User creates a new task</td>
+                <td>Task is created with associated task ID</td>
+                <td>FR-7</td>
+            </tr>
+            <tr class="light_row">
+                <td><center>V-6b</center></td>
+                <td>User pauses the current running task</td>
+                <td>Task has stopped its execution</td>
+                <td>FR-7</td>
+            </tr>
+            <tr class="dark_row">
+                <td><center>V-6c</center></td>
+                <td>User deletes the task</td>
+                <td>Task stops if it is currently running to update</td>
+                <td>FR-7</td>
+            </tr>
+            <tr class="light_row">
+                <td><center>V-6d</center></td>
+                <td>User edits the task</td>
+                <td>Task stops if it is currently running to update</td>
+                <td>FR-7</td>
+            </tr>
+            <tr class="dark_row">
+                <td><center>V-7a</center></td>
+                <td>User sends a message sending request and wants to track the lifecycle of the message</td>
+                <td>System generates a unique business ID for user to use, aggregates and summarizes key data points to show message activities along with querying message delivery status, and inserts log markers at key points in processing layer to accurately let user know what stage the message delivery is in</td>
+                <td>FR-8, FR-9, FR-10</td>
+            </tr>
+            <tr class="light_row">
+                <td><center>V-8</center></td>
+                <td>System admin/moderator wants to clean the log.</td>
+                <td>System utilizes Flink to perform log cleaning along with organizing data by different dimensions</td>
+                <td>FR-11</td>
+            </tr>
+            <tr class="dark_row">
+                <td><center>V-9</center></td>
+                <td>Different users send multiple message sending requests across multiple channels</td>
+                <td>System handles all of the messages without extreme performance degradation.</td>
+                <td>NFR-2</td>
+            </tr>
+        </table>
+
+        <br>
+        <p>Some of the non-functional requirements are not directly testable and were not included in the tests. These non-functional requirements are NFR-1: High Availability and NFR-3: Low Latency.</p>
+
+        <br>
+        <div id="control">
+            <a class="nav_button" href="phase_three.html">Prev</a>
+            <a class="nav_button" href="full_text.html">Next</a>
+        </div>
+    </div>
+</body>

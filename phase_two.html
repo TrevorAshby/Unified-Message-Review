@@ -1,0 +1,92 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unified Messaging - Review</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <div class="navbar">
+        <div class="navbar_container">
+            <a class="navbar_link title" href="index.html">CS5744 - Project 2</a>
+            <a class="navbar_link" href="index.html">Test Scope</a>
+            <a class="navbar_link" href="test_plan.html">Test Plan</a>
+            <a class="navbar_link" href="phase_one.html">Phase One: Message Handler Test</a>
+            <a class="navbar_link active" href="phase_two.html">Phase Two: Scheduled Messaging Test</a>
+            <a class="navbar_link" href="phase_three.html">Phase Three: Bakend and Log Processing Testing</a>
+            <a class="navbar_link" href="validation.html">Validation Testing</a>
+            <a class="navbar_link" href="full_text.html">Full Text</a>
+        </div>
+    </div>
+    <div id="content">
+        <br>
+        <h1>Phase Two: Scheduled Messaging Test</h1>
+        <hr>
+        <p>In this phase, we are performing scheduler integration testing to validate the creation, update, and execution of tasks. The integration tests simulate various scenarios to ensure the scheduler and executor functionalities meet the specified requirements.</p> 
+        
+        <br>
+        <h1>Test Case Skeletons</h1>
+        <hr>
+        <table>
+            <tr class="dark_row">
+                <th>Test Case ID</th>
+                <th>Test Case Objective</th>
+                <th>Test Case Description</th>
+                <th>Expected Results</th>
+            </tr>
+            <tr class="light_row">
+                <td><center>2.1</center></td>
+                <td>Validate that the correct Task is created for scheduling.</td>
+                <td>In this test, a scheduled task will be created by providing an id, verifying that a correct task is created with the appropriate ID for the system.</td>
+                <td>Task is created and saved with the appropriate ID in the scheduler.</td>
+            </tr>
+            <tr class="dark_row">
+                <td><center>2.2</center></td>
+                <td>Task is created and saved with the appropriate ID in the scheduler.</td>
+                <td>This test is checking to see if the task created in the previous test case is properly updated and saved within the system, which will be used for reference later. </td>
+                <td>Updated task information is saved correctly in the system.</td>
+            </tr>
+            <tr class="light_row">
+                <td><center>2.3</center></td>
+                <td>Verify that the scheduler properly sets the default execution if no expression is present.</td>
+                <td>Setup a scheduled task that does not have any task information to verify that the default task can be properly created.</td>
+                <td>A task with default execution settings is created successfully and can be retrieved.</td>
+            </tr>
+            <tr class="dark_row">
+                <td><center>2.4</center></td>
+                <td>Verify that the scheduler properly sets the custom execution from the present expression.</td>
+                <td>Setup a scheduled task that has custom parameters for the task information to verify that a custom task can be properly created.</td>
+                <td>A task with custom execution settings is created successfully and reflects the provided parameters.</td>
+            </tr>
+            <tr class="light_row">
+                <td><center>2.5</center></td>
+                <td>Verify that the cron job information is properly built and returned. </td>
+                <td>Create a scheduled task and check to see if the returned cron job information is saved with the task.</td>
+                <td>Cron job information is built accurately and saved with the task.</td>
+            </tr>
+            <tr class="dark_row">
+                <td><center>2.6</center></td>
+                <td>Verify that a scheduled task can be properly deleted from the system.</td>
+                <td>This test will ensure that the system can properly clear a scheduled event so that any unwanted events can be deleted.</td>
+                <td>The task is removed from the system and cannot be retrieved afterward.</td>
+            </tr>
+            <tr class="light_row">
+                <td><center>2.7</center></td>
+                <td>Ensure that the executor properly triggers and starts a saved task.</td>
+                <td>This tests the functionality of triggering a test that is saved, to make sure that processes can correctly be saved and executed.</td>
+                <td>The saved task is successfully executed when triggered.</td>
+            </tr>
+            <tr class="dark_row">
+                <td><center>2.8</center></td>
+                <td>Ensure that the task finishes in the correct scheduled time.</td>
+                <td>Ensure that the system can work to completion based upon the start and end criteria.</td>
+                <td>The task completes within the specified timeframe and outputs the expected results.</td>
+            </tr>
+        </table>
+        <br>
+        <div id="control">
+            <a class="nav_button" href="phase_one.html">Prev</a>
+            <a class="nav_button" href="phase_three.html">Next</a>
+        </div>
+    </div>
+</body>

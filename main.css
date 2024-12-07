@@ -1,0 +1,103 @@
+body {
+    margin: 0;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    line-height: 24px;
+}
+.navbar {
+    background-color: maroon;
+    min-height: 70px;
+    width: 100%;
+    
+}
+
+.navbar_container {
+    padding: 25px;
+    width: 90%;
+    grid-template-columns: auto auto auto auto auto auto auto auto;
+}
+
+a {
+    text-decoration: none;
+}
+
+.navbar_link {
+    color: rgb(196, 158, 158);
+    margin-left: 25px;
+    min-height: 70px;
+}
+
+.navbar_link:hover {
+    cursor: pointer;
+    color: rgb(243, 219, 219)!important;
+}
+
+.title {
+    color: rgb(243, 219, 219)!important;
+    font-weight: bold;
+}
+
+.active {
+    color: rgb(243, 219, 219)!important;
+    /* font-weight: bold; */
+}
+
+#names {
+    width: 210px;
+    margin-top: -5px;
+    margin-right: 25px;
+}
+
+#content {
+    padding: 30px;
+    width: 70%;
+    margin: auto;
+    box-shadow:
+    10px 10px 5px grey, /* First shadow */
+    -10px 10px 5px grey; /* Second shadow */
+
+}
+
+table {
+    margin: auto;
+}
+
+th {
+    font-weight: bold;
+    padding: 8px;
+}
+
+.dark_row {
+    background-color: rgb(219, 219, 219);
+}
+
+.light_row {
+    background-color: rgb(241, 241, 241);
+}
+td {
+    padding: 8px;
+}
+
+img {
+    width: 60%;
+}
+
+#control {
+    grid-template-columns: 90% 10%;
+    display: grid;
+}
+
+.nav_button {
+    background-color: lightgray;
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 5px;
+    color: black;
+    text-decoration: none;
+    width: 35px;
+}
+
+.nav_button:hover {
+    cursor: pointer;
+    background-color: rgb(166, 166, 166);
+}

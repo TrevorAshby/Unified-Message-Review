@@ -1,0 +1,92 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unified Messaging - Review</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <div class="navbar">
+        <div class="navbar_container">
+            <a class="navbar_link title" href="index.html">CS5744 - Project 2</a>
+            <a class="navbar_link" href="index.html">Test Scope</a>
+            <a class="navbar_link" href="test_plan.html">Test Plan</a>
+            <a class="navbar_link active" href="phase_one.html">Phase One: Message Handler Test</a>
+            <a class="navbar_link" href="phase_two.html">Phase Two: Scheduled Messaging Test</a>
+            <a class="navbar_link" href="phase_three.html">Phase Three: Bakend and Log Processing Testing</a>
+            <a class="navbar_link" href="validation.html">Validation Testing</a>
+            <a class="navbar_link" href="full_text.html">Full Text</a>
+        </div>
+    </div>
+    <div id="content">
+        <br>
+        <h1>Phase One: Message Hanler Test</h1>
+        <hr>
+        <p>In this first phase, we will be evaluating the effectiveness and functionality of the Message Access Layer (MAL) and the Message Processing Layer (Handler). To do this, our integration tests will construct sample MAL inputs and provide them to the Handler, then the tests will monitor the Handlers actions and final outputs of the inputs. The following tests will directly evaluate the following functional and non-functional requirements from the original document: FR1 - Send and Batch Send Messages, FR2 - Real-Time and Scheduled Message Delivery, FR3 - Message Deduplication, FR4 - Multi-Channel Support, FR5 - Rate Limiting and Traffic Control, FR6 - Night-time Blocking and Next-day Sending, and NFR2 - Scalability.</p> 
+        
+        <br>
+        <h1>Test Case Skeletons</h1>
+        <hr>
+        <table>
+            <tr class="dark_row">
+                <th>Test Case ID</th>
+                <th>Test Case Objective</th>
+                <th>Test Case Description</th>
+                <th>Expected Results</th>
+            </tr>
+            <tr class="light_row">
+                <td><center>1.1</center></td>
+                <td>Validate both single and batch message creation.</td>
+                <td>The test will create first a single message and then a batch of messages to evaluate the correctness of messageTemplateId and other parameters.</td>
+                <td>Message(s) object(s) are created and ready to be passed to the handler.</td>
+            </tr>
+            <tr class="dark_row">
+                <td><center>1.2</center></td>
+                <td>Validate the CheckAction, SendAssembleAction, and SendMqAction.</td>
+                <td>Test will take generated messages and run them through the various actions to evaluate each.</td>
+                <td>Messages will be processed correctly and effectively.</td>
+            </tr>
+            <tr class="light_row">
+                <td><center>1.3</center></td>
+                <td>Evaluate the Handlers ability to comply with Multi-channel support.</td>
+                <td>Test will provide sample messages to the Handler to evaluate its ability to transmit over multiple channels as described in the original document.</td>
+                <td>SMS and email will be transmitted correctly and intact to the correct recipients.</td>
+            </tr>
+            <tr class="dark_row">
+                <td><center>1.4</center></td>
+                <td>Test the deduplication method within the Handler.</td>
+                <td>Test will provide the system with known business keys and run known message/keys through the Handler. </td>
+                <td>The Client will receive no more than the number of messages described and no duplicates.</td>
+            </tr>
+            <tr class="light_row">
+                <td><center>1.5</center></td>
+                <td>Testing the Rate Limiter.</td>
+                <td>The test will attempt to overload the set rate limit with generated messages with known contents to evaluate the Handler’s response.</td>
+                <td>Rate Limiter will efficiently and effectively handle the increased traffic with no errors for a set period of time.</td>
+            </tr>
+            <tr class="dark_row">
+                <td><center>1.6</center></td>
+                <td>Testing the Night-delay and Next-day Sending.</td>
+                <td>The test will attempt to relay generated messages at various times throughout the day and night, Handler’s management of this will be evaluated against expected behavior.</td>
+                <td>The Night delay will not send messages during the set exclusion time, Next day sending will appropriately manage and/or delay traffic in excess of maximum levels.</td>
+            </tr>
+            <tr class="light_row">
+                <td><center>1.7</center></td>
+                <td>Testing of the Thread-Pool Management and Shutdown Procedure.</td>
+                <td>The test will evaluate the functionality of the Thread Pool by sending known generated messages and monitoring its functionality based on each groupId.</td>
+                <td>The Thread Pool will handle the given traffic and sort the messages into groups as intended.</td>
+            </tr>
+            <tr class="dark_row">
+                <td><center>1.8</center></td>
+                <td>Testing Scalability.</td>
+                <td>This test will evaluate the ability of the system to handle large amounts of known, generated message traffic, and determine the level of maximum functionality.</td>
+                <td>The endurance test will provide the developers with an estimate of the optimal service ceiling of the system, and what improvements could be made.</td>
+            </tr>
+        </table>
+        <br>
+        <div id="control">
+            <a class="nav_button" href="test_plan.html">Prev</a>
+            <a class="nav_button" href="phase_two.html">Next</a>
+        </div>
+    </div>
+</body>

@@ -1,0 +1,32 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unified Messaging - Review</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <div class="navbar">
+        <div class="navbar_container">
+            <a class="navbar_link title" href="index.html">CS5744 - Project 2</a>
+            <a class="navbar_link" href="index.html">Test Scope</a>
+            <a class="navbar_link active" href="test_plan.html">Test Plan</a>
+            <a class="navbar_link" href="phase_one.html">Phase One: Message Handler Test</a>
+            <a class="navbar_link" href="phase_two.html">Phase Two: Scheduled Messaging Test</a>
+            <a class="navbar_link" href="phase_three.html">Phase Three: Bakend and Log Processing Testing</a>
+            <a class="navbar_link" href="validation.html">Validation Testing</a>
+            <a class="navbar_link" href="full_text.html">Full Text</a>
+        </div>
+    </div>
+    <div id="content">
+        <br>
+        <h1>Test Plan</h1>
+        <hr>
+        <p>For this project, we intend to conduct a series with three phases of integration testing, starting with the Message Handler (phase 1), which takes in user input and translates that into a structured message that is given a request ID, is screened and processed by a Handler that then passes it on the Task Scheduler (phase 2). This scheduler translates the messages into a Task object and then executes it via a crontable, and finally saves the task to the database (phase 3). Finally, the Backend and Database Components store the tasks and associated data in an SQL table along with other features that include a log table, an ELK Framework, and log cleaner to help maintain the backend systems.</p> 
+        <p>With this type of application, we felt that the best way to test this system was through a step-by-step integration process. Wherein we walk through the process from beginning to end, evaluating each step in turn, and thereby thoroughly evaluating the project in question. Further, we will also conduct a validation testing phase, which will directly evaluate the project based on the requirements as listed in the original document.</p>
+        <div id="control">
+            <a class="nav_button" href="index.html">Prev</a>
+            <a class="nav_button" href="phase_one.html">Next</a>
+        </div>
+    </div>
+</body>

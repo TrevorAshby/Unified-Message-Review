@@ -1,0 +1,379 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unified Messaging - Review</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <div class="navbar">
+        <div class="navbar_container">
+            <a class="navbar_link title" href="index.html">CS5744 - Project 2</a>
+            <a class="navbar_link" href="index.html">Test Scope</a>
+            <a class="navbar_link active" href="test_plan.html">Test Plan</a>
+            <a class="navbar_link" href="phase_one.html">Phase One: Message Handler Test</a>
+            <a class="navbar_link" href="phase_two.html">Phase Two: Scheduled Messaging Test</a>
+            <a class="navbar_link" href="phase_three.html">Phase Three: Bakend and Log Processing Testing</a>
+            <a class="navbar_link" href="validation.html">Validation Testing</a>
+            <a class="navbar_link" href="full_text.html">Full Text</a>
+        </div>
+    </div>
+    <div id="content">
+        <br>
+        <h1>Test Plan</h1>
+        <hr>
+        <p>For this project, we intend to conduct a series with three phases of integration testing, starting with the Message Handler (phase 1), which takes in user input and translates that into a structured message that is given a request ID, is screened and processed by a Handler that then passes it on the Task Scheduler (phase 2). This scheduler translates the messages into a Task object and then executes it via a crontable, and finally saves the task to the database (phase 3). Finally, the Backend and Database Components store the tasks and associated data in an SQL table along with other features that include a log table, an ELK Framework, and log cleaner to help maintain the backend systems.</p> 
+        <p>With this type of application, we felt that the best way to test this system was through a step-by-step integration process. Wherein we walk through the process from beginning to end, evaluating each step in turn, and thereby thoroughly evaluating the project in question. Further, we will also conduct a validation testing phase, which will directly evaluate the project based on the requirements as listed in the original document.</p>
+        
+        
+        <br>
+        <h1>Phase One: Message Hanler Test</h1>
+        <hr>
+        <p>In this first phase, we will be evaluating the effectiveness and functionality of the Message Access Layer (MAL) and the Message Processing Layer (Handler). To do this, our integration tests will construct sample MAL inputs and provide them to the Handler, then the tests will monitor the Handlers actions and final outputs of the inputs. The following tests will directly evaluate the following functional and non-functional requirements from the original document: FR1 - Send and Batch Send Messages, FR2 - Real-Time and Scheduled Message Delivery, FR3 - Message Deduplication, FR4 - Multi-Channel Support, FR5 - Rate Limiting and Traffic Control, FR6 - Night-time Blocking and Next-day Sending, and NFR2 - Scalability.</p> 
+        
+        <br>
+        <h1>Test Case Skeletons</h1>
+        <hr>
+        <table>
+            <tr class="dark_row">
+                <th>Test Case ID</th>
+                <th>Test Case Objective</th>
+                <th>Test Case Description</th>
+                <th>Expected Results</th>
+            </tr>
+            <tr class="light_row">
+                <td><center>1.1</center></td>
+                <td>Validate both single and batch message creation.</td>
+                <td>The test will create first a single message and then a batch of messages to evaluate the correctness of messageTemplateId and other parameters.</td>
+                <td>Message(s) object(s) are created and ready to be passed to the handler.</td>
+            </tr>
+            <tr class="dark_row">
+                <td><center>1.2</center></td>
+                <td>Validate the CheckAction, SendAssembleAction, and SendMqAction.</td>
+                <td>Test will take generated messages and run them through the various actions to evaluate each.</td>
+                <td>Messages will be processed correctly and effectively.</td>
+            </tr>
+            <tr class="light_row">
+                <td><center>1.3</center></td>
+                <td>Evaluate the Handlers ability to comply with Multi-channel support.</td>
+                <td>Test will provide sample messages to the Handler to evaluate its ability to transmit over multiple channels as described in the original document.</td>
+                <td>SMS and email will be transmitted correctly and intact to the correct recipients.</td>
+            </tr>
+            <tr class="dark_row">
+                <td><center>1.4</center></td>
+                <td>Test the deduplication method within the Handler.</td>
+                <td>Test will provide the system with known business keys and run known message/keys through the Handler. </td>
+                <td>The Client will receive no more than the number of messages described and no duplicates.</td>
+            </tr>
+            <tr class="light_row">
+                <td><center>1.5</center></td>
+                <td>Testing the Rate Limiter.</td>
+                <td>The test will attempt to overload the set rate limit with generated messages with known contents to evaluate the Handler’s response.</td>
+                <td>Rate Limiter will efficiently and effectively handle the increased traffic with no errors for a set period of time.</td>
+            </tr>
+            <tr class="dark_row">
+                <td><center>1.6</center></td>
+                <td>Testing the Night-delay and Next-day Sending.</td>
+                <td>The test will attempt to relay generated messages at various times throughout the day and night, Handler’s management of this will be evaluated against expected behavior.</td>
+                <td>The Night delay will not send messages during the set exclusion time, Next day sending will appropriately manage and/or delay traffic in excess of maximum levels.</td>
+            </tr>
+            <tr class="light_row">
+                <td><center>1.7</center></td>
+                <td>Testing of the Thread-Pool Management and Shutdown Procedure.</td>
+                <td>The test will evaluate the functionality of the Thread Pool by sending known generated messages and monitoring its functionality based on each groupId.</td>
+                <td>The Thread Pool will handle the given traffic and sort the messages into groups as intended.</td>
+            </tr>
+            <tr class="dark_row">
+                <td><center>1.8</center></td>
+                <td>Testing Scalability.</td>
+                <td>This test will evaluate the ability of the system to handle large amounts of known, generated message traffic, and determine the level of maximum functionality.</td>
+                <td>The endurance test will provide the developers with an estimate of the optimal service ceiling of the system, and what improvements could be made.</td>
+            </tr>
+        </table>
+        
+        <br>
+        <h1>Phase Two: Scheduled Messaging Test</h1>
+        <hr>
+        <p>In this phase, we are performing scheduler integration testing to validate the creation, update, and execution of tasks. The integration tests simulate various scenarios to ensure the scheduler and executor functionalities meet the specified requirements.</p> 
+        
+        <br>
+        <h1>Test Case Skeletons</h1>
+        <hr>
+        <table>
+            <tr class="dark_row">
+                <th>Test Case ID</th>
+                <th>Test Case Objective</th>
+                <th>Test Case Description</th>
+                <th>Expected Results</th>
+            </tr>
+            <tr class="light_row">
+                <td><center>2.1</center></td>
+                <td>Validate that the correct Task is created for scheduling.</td>
+                <td>In this test, a scheduled task will be created by providing an id, verifying that a correct task is created with the appropriate ID for the system.</td>
+                <td>Task is created and saved with the appropriate ID in the scheduler.</td>
+            </tr>
+            <tr class="dark_row">
+                <td><center>2.2</center></td>
+                <td>Task is created and saved with the appropriate ID in the scheduler.</td>
+                <td>This test is checking to see if the task created in the previous test case is properly updated and saved within the system, which will be used for reference later. </td>
+                <td>Updated task information is saved correctly in the system.</td>
+            </tr>
+            <tr class="light_row">
+                <td><center>2.3</center></td>
+                <td>Verify that the scheduler properly sets the default execution if no expression is present.</td>
+                <td>Setup a scheduled task that does not have any task information to verify that the default task can be properly created.</td>
+                <td>A task with default execution settings is created successfully and can be retrieved.</td>
+            </tr>
+            <tr class="dark_row">
+                <td><center>2.4</center></td>
+                <td>Verify that the scheduler properly sets the custom execution from the present expression.</td>
+                <td>Setup a scheduled task that has custom parameters for the task information to verify that a custom task can be properly created.</td>
+                <td>A task with custom execution settings is created successfully and reflects the provided parameters.</td>
+            </tr>
+            <tr class="light_row">
+                <td><center>2.5</center></td>
+                <td>Verify that the cron job information is properly built and returned. </td>
+                <td>Create a scheduled task and check to see if the returned cron job information is saved with the task.</td>
+                <td>Cron job information is built accurately and saved with the task.</td>
+            </tr>
+            <tr class="dark_row">
+                <td><center>2.6</center></td>
+                <td>Verify that a scheduled task can be properly deleted from the system.</td>
+                <td>This test will ensure that the system can properly clear a scheduled event so that any unwanted events can be deleted.</td>
+                <td>The task is removed from the system and cannot be retrieved afterward.</td>
+            </tr>
+            <tr class="light_row">
+                <td><center>2.7</center></td>
+                <td>Ensure that the executor properly triggers and starts a saved task.</td>
+                <td>This tests the functionality of triggering a test that is saved, to make sure that processes can correctly be saved and executed.</td>
+                <td>The saved task is successfully executed when triggered.</td>
+            </tr>
+            <tr class="dark_row">
+                <td><center>2.8</center></td>
+                <td>Ensure that the task finishes in the correct scheduled time.</td>
+                <td>Ensure that the system can work to completion based upon the start and end criteria.</td>
+                <td>The task completes within the specified timeframe and outputs the expected results.</td>
+            </tr>
+        </table>
+        <br>
+        
+        <br>
+        <h1>Phase Three: Bakend and Log Processing Testing</h1>
+        <hr>
+        <p>In this phase we will focus on testing and validating the backend management layer and the stream processing module (Modules 4 and 5). These modules are responsible for managing templates, tracking the status of messages, CRUD operations, and processing logs.</p> 
+        <p>These tests will address the following functional and nonfunctional requirements.</p>
+        <p>FR-8: Data Aggregation and Delivery Status Query.</p>
+        <p>FR-9: Critical Path Log Instrumentation.</p>
+        <p>FR-10: Full Lifecycle Tracking via Business ID.</p>
+        <p>FR-11: Flink-Based Log Cleaning.</p>
+        <p>NFR-2: Scalability.</p>
+
+        <br>
+        <h1>Test Case Skeletons</h1>
+        <hr>
+        <table>
+            <tr class="dark_row">
+                <th>Test Case ID</th>
+                <th>Test Case Objective</th>
+                <th>Test Case Description</th>
+                <th>Expected Results</th>
+            </tr>
+            <tr class="light_row">
+                <td><center>3.1</center></td>
+                <td>Validate CRUD operations for message templates</td>
+                <td>Test creation, retrieval, updating, and deletion of message templates via the backend management interface. </td>
+                <td>All CRUD operations successful with changes to the template reflected accurately after each operation. </td>
+            </tr>
+            <tr class="dark_row">
+                <td><center>3.2</center></td>
+                <td>Ensure message delivery status tracking by user ID or template ID. </td>
+                <td>Test sending multiple messages and then query their status using both user IDs and template IDs</td>
+                <td>System should return the correct status information for all messages</td>
+            </tr>
+            <tr class="light_row">
+                <td><center>3.3</center></td>
+                <td>Test integration of amis low-code framework and Spring Boot backend </td>
+                <td>Test integration of frontend and backend components during CRUD operations</td>
+                <td>Frontend should display expected data without errors</td>
+            </tr>
+            <tr class="dark_row">
+                <td><center>3.4</center></td>
+                <td>Validate critical path log markers</td>
+                <td>Send a series of messages through the system and verify that logs are generated at each critical point (discarded, filtered, deduplicated, delivered)</td>
+                <td>Log entries should include the correct markers and codes</td>
+            </tr>
+            <tr class="light_row">
+                <td><center>3.5</center></td>
+                <td>Ensure real-time log aggregation via Flink </td>
+                <td>Simulate high traffic and verify that Flink correctly processes logs in real time </td>
+                <td>Logs should be processed and aggregated without delays. </td>
+            </tr>
+            <tr class="dark_row">
+                <td><center>3.6</center></td>
+                <td>Validate scalability/volume handling</td>
+                <td>Simulate high volume of messages and verify that the system performs as expected under load</td>
+                <td>System should handle a large volume of messages without performance degradation </td>
+            </tr>
+            <tr class="light_row">
+                <td><center>3.7</center></td>
+                <td>Test unique business ID generation and lifecycle tracking</td>
+                <td>Generate message with unique business IDs and trace their lifecycles from creation to delivery</td>
+                <td>System should correctly track each message’s status using the business ID at all points in its lifecycle.</td>
+            </tr>
+            <tr class="dark_row">
+                <td><center>3.8</center></td>
+                <td>Verify ELK framework implementation for log storage and monitoring.</td>
+                <td>Send logs to the ELK stack then ensure they are accessible for monitoring and troubleshooting. </td>
+                <td>Logs should be stored in ELK and are retrievable. </td>
+            </tr>
+        </table>
+        <br>
+        
+        <br>
+        <h1>Validation Testing</h1>
+        <hr>
+        <p>In this section of testing, we are making sure that the software meets all the functional and non-functional requirements. These tests will look at every module of the software at once in order to make sure there is end-to-end adherence to the requirements.</p> 
+
+        <br>
+        <h1>Test Case Skeletons</h1>
+        <hr>
+        <table>
+            <tr class="dark_row">
+                <th>Test Case ID</th>
+                <th>Test Case Description</th>
+                <th>Expected Results</th>
+                <th>Functional / Nonfunctional Requirement's Satisfied</th>
+            </tr>
+            <tr class="light_row">
+                <td><center>V-1a</center></td>
+                <td>User sends a single message sending request</td>
+                <td>Single message is sent to every intended recipient</td>
+                <td>FR-1</td>
+            </tr>
+            <tr class="dark_row">
+                <td><center>V-1b</center></td>
+                <td>User sends a batch message sending request</td>
+                <td>Batch message is sent to every intended recipient</td>
+                <td>FR-1</td>
+            </tr>
+            <tr class="light_row">
+                <td><center>V-1c</center></td>
+                <td>User sends a single message sending request during high volume</td>
+                <td>Single message is sent to every intended recipient</td>
+                <td>FR-1</td>
+            </tr>
+            <tr class="dark_row">
+                <td><center>V-1d</center></td>
+                <td>User sends a batch message sending request during high volume</td>
+                <td>Batch message is sent to every intended recipient</td>
+                <td>FR-1</td>
+            </tr>
+            <tr class="light_row">
+                <td><center>V-2a</center></td>
+                <td>User sends a single and batch message sending request to be sent out in real-time on SMS</td>
+                <td>Single and batch messages are sent out to every intended recipient in real-time on SMS</td>
+                <td>FR-2, FR-4</td>
+            </tr>
+            <tr class="dark_row">
+                <td><center>V-2b</center></td>
+                <td>User sends a single and batch message sending request to be sent out in real-time on email</td>
+                <td>Single and batch messages are sent out to every intended recipient in real-time on email</td>
+                <td>FR-2, FR-4</td>
+            </tr>
+            <tr class="light_row">
+                <td><center>V-2c</center></td>
+                <td>User sends a single and batch message sending request to be sent out in real-time on instant messaging</td>
+                <td>Single and batch messages are sent out to every intended recipient in real-time on instant messaging</td>
+                <td>FR-2, FR-4</td>
+            </tr>
+            <tr class="dark_row">
+                <td><center>V-2d</center></td>
+                <td>User sends a single and batch message sending request to be sent out the next day on SMS</td>
+                <td>Single and batch messages are sent out to every intended recipient the next day on SMS</td>
+                <td>FR-2, FR-4</td>
+            </tr>
+            <tr class="light_row">
+                <td><center>V-2e</center></td>
+                <td>User sends a single and batch message sending request to be sent out the next day on email</td>
+                <td>Single and batch messages are sent out to every intended recipient the next day on email</td>
+                <td>FR-2, FR-4</td>
+            </tr>
+            <tr class="dark_row">
+                <td><center>V-2f</center></td>
+                <td>User sends a single and batch message sending request to be sent out the next day on instant messaging</td>
+                <td>Single and batch messages are sent out to every intended recipient the next day on instant messaging</td>
+                <td>FR-2, FR-4</td>
+            </tr>
+            <tr class="light_row">
+                <td><center>V-3</center></td>
+                <td>User accidentally sends a duplicate message sending request.</td>
+                <td>Duplicate message is found and deleted before being sent out</td>
+                <td>FR-3</td>
+            </tr>
+            <tr class="dark_row">
+                <td><center>V-4</center></td>
+                <td>User sends multiple messages sending requests that would overload the channel</td>
+                <td>Platform sees the channel going over rate limit and switches the provider to continue the service while prevent overload</td>
+                <td>FR-5</td>
+            </tr>
+            <tr class="light_row">
+                <td><center>V-5</center></td>
+                <td>User tries to send a message sending request to be sent late at night</td>
+                <td>Platform defers the message to be sent at 9:00 AM the next day</td>
+                <td>FR-6</td>
+            </tr>
+            <tr class="dark_row">
+                <td><center>V-6a</center></td>
+                <td>User creates a new task</td>
+                <td>Task is created with associated task ID</td>
+                <td>FR-7</td>
+            </tr>
+            <tr class="light_row">
+                <td><center>V-6b</center></td>
+                <td>User pauses the current running task</td>
+                <td>Task has stopped its execution</td>
+                <td>FR-7</td>
+            </tr>
+            <tr class="dark_row">
+                <td><center>V-6c</center></td>
+                <td>User deletes the task</td>
+                <td>Task stops if it is currently running to update</td>
+                <td>FR-7</td>
+            </tr>
+            <tr class="light_row">
+                <td><center>V-6d</center></td>
+                <td>User edits the task</td>
+                <td>Task stops if it is currently running to update</td>
+                <td>FR-7</td>
+            </tr>
+            <tr class="dark_row">
+                <td><center>V-7a</center></td>
+                <td>User sends a message sending request and wants to track the lifecycle of the message</td>
+                <td>System generates a unique business ID for user to use, aggregates and summarizes key data points to show message activities along with querying message delivery status, and inserts log markers at key points in processing layer to accurately let user know what stage the message delivery is in</td>
+                <td>FR-8, FR-9, FR-10</td>
+            </tr>
+            <tr class="light_row">
+                <td><center>V-8</center></td>
+                <td>System admin/moderator wants to clean the log.</td>
+                <td>System utilizes Flink to perform log cleaning along with organizing data by different dimensions</td>
+                <td>FR-11</td>
+            </tr>
+            <tr class="dark_row">
+                <td><center>V-9</center></td>
+                <td>Different users send multiple message sending requests across multiple channels</td>
+                <td>System handles all of the messages without extreme performance degradation.</td>
+                <td>NFR-2</td>
+            </tr>
+        </table>
+
+        <br>
+        <p>Some of the non-functional requirements are not directly testable and were not included in the tests. These non-functional requirements are NFR-1: High Availability and NFR-3: Low Latency.</p>
+
+        <br>
+        
+        <div id="control">
+            <a class="nav_button" href="validation.html">Prev</a>
+            <a class="nav_button" href="index.html">Home</a>
+        </div>
+    </div>
+</body>
